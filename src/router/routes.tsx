@@ -1,8 +1,8 @@
 import React, { lazy } from 'react'
 import { MenuProps } from 'antd'
-import { NonIndexRouteObject, createHashRouter } from 'react-router-dom'
+import { Navigate, NonIndexRouteObject, createHashRouter } from 'react-router-dom'
 
-import { hoc, Replace } from './LazyHoc'
+import { hoc, Replace } from './Hoc'
 import { DashboardOutlined } from '@ant-design/icons'
 
 export interface RouteSchema {
@@ -24,7 +24,10 @@ export interface UserRoute extends NonIndexRouteObject, RouteSchema {
 export const RootRoutes: UserRoute[] = [
   {
     path: '/',
-    element: hoc(lazy(() => import('@/layouts'))),
+    element: hoc(
+      lazy(() => import('@/layouts')),
+      'Global'
+    ),
     children: [
       {
         path: '/dashboard',
@@ -34,6 +37,8 @@ export const RootRoutes: UserRoute[] = [
         children: [
           {
             path: '/dashboard/dataview',
+            // @ts-ignore
+            index: true,
             title: '平台数据概览',
             menu: true,
             element: hoc(lazy(() => import('@/pages/dashboard/dataview')))
@@ -49,23 +54,32 @@ export const RootRoutes: UserRoute[] = [
             title: '审批',
             menu: true,
             element: hoc(lazy(() => import('@/pages/dashboard/approve')))
+          },
+          {
+            path: '*',
+            element: <Navigate to="/" replace />
           }
         ]
-      },
-      {
-        path: '/404',
-        element: hoc(lazy(() => import('@/pages/404')))
-      },
-      {
-        path: '*',
-        element: <Replace />
       }
     ]
   },
   {
     path: '/login',
-    loader: () => ({}),
-    element: hoc(lazy(() => import('@/pages/login')))
+    element: hoc(
+      lazy(() => import('@/pages/login')),
+      'Global'
+    )
+  },
+  {
+    path: '/404',
+    element: hoc(
+      lazy(() => import('@/pages/404')),
+      'Global'
+    )
+  },
+  {
+    path: '*',
+    element: <Replace />
   }
 ]
 

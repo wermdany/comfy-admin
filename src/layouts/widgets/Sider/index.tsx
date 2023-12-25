@@ -15,8 +15,6 @@ const Sider: FC = () => {
 
   const openKeys = getMenuOpenKeys(pathname)
 
-  console.log(1)
-
   const handleSwitchNavigate: MenuProps['onClick'] = event => {
     navigate(event.key)
   }

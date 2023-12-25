@@ -10,7 +10,7 @@ import Footer from './widgets/Footer'
 
 import styles from '@/layouts/layout.module.less'
 
-const Layouts: FC = () => {
+const Layout: FC = () => {
   const { collapse } = useLayoutStore()
 
   return (
@@ -27,4 +27,4 @@ const Layouts: FC = () => {
   )
 }
 
-export default Layouts
+export default Layout

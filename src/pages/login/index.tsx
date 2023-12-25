@@ -2,7 +2,6 @@ import { FC } from 'react'
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 
-import { registerRoutes } from '@/router'
 import { useUserStore } from '@/store'
 
 const Login: FC = () => {
@@ -15,9 +14,7 @@ const Login: FC = () => {
 
     setUserInfo({ login: true })
 
-    registerRoutes()
-
-    navigate('/dashboard', { replace: true })
+    navigate('/', { replace: true })
   }
 
   return (
