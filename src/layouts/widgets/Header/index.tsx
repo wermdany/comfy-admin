@@ -1,25 +1,45 @@
 import { FC } from 'react'
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
+import { MenuUnfoldOutlined, MenuFoldOutlined, SearchOutlined } from '@ant-design/icons'
 
 import { useLayoutStore } from '@/store'
 
 import styles from '@/layouts/layout.module.less'
+import { Avatar, Badge, Space } from 'antd'
 
-const Header: FC = () => {
+const Collapse = () => {
   const { collapse, toggleCollapse } = useLayoutStore()
 
   const handleToggleCollapse = () => {
     toggleCollapse()
   }
 
+  if (collapse) return <MenuUnfoldOutlined style={{ fontSize: 20 }} onClick={handleToggleCollapse} />
+
+  return <MenuFoldOutlined style={{ fontSize: 20 }} onClick={handleToggleCollapse} />
+}
+
+const HeaderFocus = () => {
+  return (
+    <Space size={20}>
+      <SearchOutlined style={{ fontSize: 20 }}></SearchOutlined>
+      <Badge count={1} size="small" dot>
+        <SearchOutlined style={{ fontSize: 20 }}></SearchOutlined>
+      </Badge>
+      <div className={styles['layout-header-user']}>
+        <Avatar></Avatar>
+        <span>用户名</span>
+      </div>
+    </Space>
+  )
+}
+
+const Header: FC = () => {
   return (
     <div className={styles['layout-header']}>
-      <div className={styles['layout-header--fixed']}>
-        {collapse ? (
-          <MenuUnfoldOutlined style={{ fontSize: 20 }} onClick={handleToggleCollapse} />
-        ) : (
-          <MenuFoldOutlined style={{ fontSize: 20 }} onClick={handleToggleCollapse} />
-        )}
+      <div className={styles['layout-header-brand']}></div>
+      <div className={styles['layout-header-content']}>
+        <Collapse />
+        <HeaderFocus />
       </div>
     </div>
   )

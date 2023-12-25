@@ -1,9 +1,9 @@
 .layout {
   display: flex;
-  background-color: #f0f0f0;
 
   &.collapse {
-    .layout-sider {
+    .layout-sider,
+    .layout-header-brand {
       width: 80px;
     }
 
@@ -14,40 +14,58 @@
 
   &-sider {
     width: 256px;
-    height: 100vh;
+    height: calc(100vh - 65px);
+
     transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     background-color: #001529;
-    position: fixed;
-    top: 0;
-    left: 0;
 
-    &--brand {
-      height: 65px;
-      background-color: #002140;
-    }
+    position: fixed;
+    top: 65px;
+    left: 0;
   }
 
   &-content {
     flex: 1;
     overflow: auto;
     padding-left: 256px;
+    padding-top: 65px;
     transition: padding-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   &-header {
-    height: 65px;
+    width: 100%;
 
-    &--fixed {
-      width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+
+    &-brand {
+      width: 256px;
       height: 65px;
-      background-color: white;
-      padding: 0 25px;
+      background-color: #002140;
+      transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
 
-      position: fixed;
-      top: 0;
-      z-index: 1;
+    &-content {
+      flex: 1;
+      padding: 0 25px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+    }
+
+    &-user {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      span {
+        margin-left: 6px;
+      }
     }
   }
 

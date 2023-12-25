@@ -16,6 +16,9 @@ export default defineConfig({
   },
 
   css: {
+    modules: {
+      generateScopedName: '[name]_[hash:8]'
+    },
     preprocessorOptions: {
       less: {
         javascriptEnabled: true

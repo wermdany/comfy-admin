@@ -14,7 +14,7 @@ export type SpinTypes = 'Global' | 'Content'
 export const hoc = (Lazy: LazyExoticComponent<ComponentType>, model: SpinTypes = 'Content') => {
   const className = model == 'Content' ? 'content-spin-loading' : 'global-spin-loading'
   return (
-    <Suspense fallback={<Spin size="large" delay={50} className={className}></Spin>}>
+    <Suspense fallback={<Spin size="large" delay={150} className={className}></Spin>}>
       <Lazy></Lazy>
     </Suspense>
   )

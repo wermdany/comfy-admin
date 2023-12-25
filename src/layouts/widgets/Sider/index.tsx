@@ -13,7 +13,7 @@ const Sider: FC = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
-  const openKeys = getMenuOpenKeys(pathname)
+  const openKeys = collapse ? [] : [getMenuOpenKeys(pathname)]
 
   const handleSwitchNavigate: MenuProps['onClick'] = event => {
     navigate(event.key)
@@ -21,12 +21,11 @@ const Sider: FC = () => {
 
   return (
     <div className={styles['layout-sider']}>
-      <div className={styles['layout-sider--brand']}></div>
       <Menu
         items={items}
         theme="dark"
         mode="inline"
-        defaultOpenKeys={[openKeys]}
+        defaultOpenKeys={openKeys}
         defaultSelectedKeys={[pathname]}
         onClick={handleSwitchNavigate}
         inlineCollapsed={collapse}
