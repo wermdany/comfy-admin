@@ -14,6 +14,8 @@ import { router } from '@/router'
 
 import '@/styles/global.less'
 
+import 'virtual:svg-icons-register'
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ConfigProvider locale={zh_CN}>
     <RouterProvider router={router}></RouterProvider>

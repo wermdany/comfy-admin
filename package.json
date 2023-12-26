@@ -44,7 +44,8 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-inspect": "^0.8.1",
-    "vite-plugin-style-import": "^2.0.0"
+    "vite-plugin-style-import": "^2.0.0",
+    "vite-plugin-svg-icons": "^2.0.1"
   },
   "engines": {
     "node": "^16.11.0"

@@ -5,9 +5,20 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 // import inspect from "vite-plugin-inspect";
 import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export default defineConfig({
-  plugins: [react(), createStyleImportPlugin({ resolves: [AntdResolve()] })],
+  plugins: [
+    react(),
+    createStyleImportPlugin({ resolves: [AntdResolve()] }),
+    /** svg 雪碧图 */
+    createSvgIconsPlugin({
+      iconDirs: [resolve(__dirname, 'src/assets/icons')],
+      symbolId: 'icon-[name]',
+      inject: 'body-first',
+      svgoOptions: true
+    })
+  ],
 
   resolve: {
     alias: {

@@ -1,10 +1,12 @@
 import { FC } from 'react'
+import { Avatar, Badge, Space } from 'antd'
 import { MenuUnfoldOutlined, MenuFoldOutlined, SearchOutlined } from '@ant-design/icons'
+
+import { SvgIcon } from '@/components'
 
 import { useLayoutStore } from '@/store'
 
 import styles from '@/layouts/layout.module.less'
-import { Avatar, Badge, Space } from 'antd'
 
 const Collapse = () => {
   const { collapse, toggleCollapse } = useLayoutStore()
@@ -23,7 +25,7 @@ const HeaderFocus = () => {
     <Space size={20}>
       <SearchOutlined style={{ fontSize: 20 }}></SearchOutlined>
       <Badge count={1} size="small" dot>
-        <SearchOutlined style={{ fontSize: 20 }}></SearchOutlined>
+        <SvgIcon name="react" style={{ fontSize: 20 }}></SvgIcon>
       </Badge>
       <div className={styles['layout-header-user']}>
         <Avatar></Avatar>

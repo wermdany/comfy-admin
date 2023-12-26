@@ -1,6 +1,9 @@
-import { FC } from 'react'
+import { FC, ComponentProps } from 'react'
+import Icon from '@ant-design/icons'
 
-export interface SvgIconProps {
+type IconType = typeof Icon
+
+export interface SvgIconProps extends ComponentProps<IconType> {
   name: string
 }
 
@@ -8,16 +11,9 @@ const SvgIcon: FC<SvgIconProps> = props => {
   const href = `#icon-${props.name}`
 
   return (
-    <svg
-      aria-hidden="true"
-      className="svg-icon"
-      focusable="false"
-      width="1em"
-      height="1em"
-      fill="currentColor"
-    >
+    <Icon {...props}>
       <use href={href} />
-    </svg>
+    </Icon>
   )
 }
 
