@@ -32,6 +32,7 @@ export const RootRoutes: UserRoute[] = [
   },
   {
     path: '/login',
+    title: '登录',
     element: hoc(
       lazy(() => import('@/pages/login')),
       'Global'
